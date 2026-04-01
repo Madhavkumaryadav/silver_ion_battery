@@ -1,8 +1,6 @@
-# Silver-Ion Battery Making Guide
+# Silver-Ion Documentation Index
 
-The documentation has been split into separate files for easier reading and maintenance.
-
-Use the index below:
+This folder contains the documentation split into separate files.
 
 1. [Purpose and Safety](01-purpose-safety.md)
 2. [Concept and Chemical Roles](02-concepts-chemicals.md)
@@ -12,4 +10,6 @@ Use the index below:
 6. [Detailed Process by Phases](06-detailed-phases.md)
 7. [Failure Modes and Update Layout](07-failure-modes-and-update-layout.md)
 
-You can also open [README.md](README.md) in this folder for the same index.
+Backward-compatible combined guide:
+
+- [silver-ion-battery-making-guide.md](silver-ion-battery-making-guide.md)

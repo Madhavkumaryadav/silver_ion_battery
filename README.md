@@ -114,9 +114,19 @@ run('matlab/silver_ion_battery_sim.m')
 
 ## 9. Documentation for Making Process
 
-The full step-by-step educational documentation for silver-ion battery making, including chemical roles, approximate quantity ranges, and architecture diagram is available in:
+The making documentation is now separated into individual files in:
 
-- `docs/silver-ion-battery-making-guide.md`
+- `docs/README.md`
+
+Quick links:
+
+- `docs/01-purpose-safety.md`
+- `docs/02-concepts-chemicals.md`
+- `docs/03-quantity-guidance.md`
+- `docs/04-step-by-step-process.md`
+- `docs/05-architecture-and-template.md`
+- `docs/06-detailed-phases.md`
+- `docs/07-failure-modes-and-update-layout.md`
 
 ## 10. Disclaimer
 
