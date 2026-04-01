@@ -131,3 +131,6 @@ Quick links:
 ## 10. Disclaimer
 
 This project is for educational and engineering prototyping use. For physical battery development, use verified chemistry data, proper safety controls, and expert supervision.
+
+## 11. Contributors 
+    1. Pranab
