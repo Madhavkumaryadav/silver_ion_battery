@@ -127,7 +127,94 @@ Quick links:
 - `docs/05-architecture-and-template.md`
 - `docs/06-detailed-phases.md`
 - `docs/07-failure-modes-and-update-layout.md`
+- `docs/08-validation-checklist.md`
+- `docs/sim_docs.md`
 
 ## 10. Disclaimer
 
 This project is for educational and engineering prototyping use. For physical battery development, use verified chemistry data, proper safety controls, and expert supervision.
+
+## 11. Quick Start (Python and MATLAB)
+
+### Python
+
+```bash
+python -m venv .venv
+.venv\Scripts\activate
+pip install -r requirements.txt
+python python/silver_ion_battery_sim.py --csv results.csv
+```
+
+### MATLAB
+
+```matlab
+run('matlab/silver_ion_battery_sim.m')
+```
+
+Expected simulation outputs include SOC, OCV, polarization voltage, and terminal voltage traces.
+
+## 12. EV Simulation and Dashboard Quick Start
+
+Run EV simulation with silver-ion pack model:
+
+```bash
+python python/ev_runner.py --mode drive --cycle mixed --duration-s 3600 --csv results_ev.csv --summary summary_ev.json
+```
+
+Open dashboard with key metrics (charge percentage, charging time, power, range, temperature):
+
+```bash
+python python/ev_dashboard.py --csv results_ev.csv --summary summary_ev.json
+```
+
+Open the PhET-style learning scene:
+
+```bash
+python show_ev_output.py --layout scene --mode drive --cycle mixed --duration-s 3600 --csv results_ev.csv --summary summary_ev.json
+```
+
+Open the investor presentation view:
+
+```bash
+python show_ev_output.py --layout investor --mode drive --cycle mixed --duration-s 3600 --csv results_ev.csv --summary summary_ev.json --save investor_demo.png
+```
+
+Play the dashboard as a live animation:
+
+```bash
+python python/ev_dashboard.py --csv results_ev.csv --summary summary_ev.json --animate
+```
+
+Run the full EV flow in one command:
+
+```bash
+python python/ev_runner.py --mode drive --cycle mixed --duration-s 3600 --csv results_ev.csv --summary summary_ev.json
+```
+
+From the repository root, you can also launch the same flow with:
+
+```bash
+python show_ev_output.py --mode drive --cycle mixed --duration-s 3600 --csv results_ev.csv --summary summary_ev.json
+```
+
+Fast-charge example:
+
+```bash
+python show_ev_output.py --mode charge --soc0 0.20 --duration-s 1800 --charge-power-kw 50 --csv results_ev.csv --summary summary_ev.json
+```
+
+Dedicated silver-ion 9-10 minute fast-charge animation:
+
+```bash
+python python/silver_ion_fast_charge_animation.py --start-soc 20 --soc-80-min 9 --soc-100-min 10 --save-animation silver_fast_charge.gif
+```
+
+## 13. Calibration and Validation
+
+Fit the simple ECM model against the reference dataset and generate a validation report:
+
+```bash
+python python/silver_ion_battery_sim.py --fit-reference --reference-csv results.csv --validation-report validation_report.json --csv fitted_results.csv
+```
+
+The report writes `validation_report.json` and the companion plot `validation_report.png`.

@@ -210,3 +210,46 @@ Checkpoints:
 
 Outputs:
 - Parameter card for simulation model update
+
+## Validation Mapping to Simulation
+
+After extracting parameters, run a validation pass before committing values to the model.
+
+### What to Compare
+
+- Compare measured voltage curve vs simulated terminal voltage trend
+- Compare rest-region OCV checkpoints
+- Compare pulse transient shape and relaxation timing
+
+### Parameter-Level Checks
+
+- `q_ah`:
+	Check that simulated SOC progression matches measured charge throughput trend.
+
+- `r0_ohm`:
+	Check immediate voltage step at pulse edges.
+
+- `r1_ohm`, `c1_f`:
+	Check relaxation curve slope and settling behavior.
+
+- `v_min`, `v_max`:
+	Check simulation limits are within observed safe test window.
+
+### Acceptance Guidance
+
+- Simulated trend should match measured direction and shape across the same current profile.
+- Residual error should be stable and not drift systematically over time.
+- If mismatch is systematic, revisit pulse protocol consistency and repeat extraction.
+
+### Output Artifact
+
+Store one validation package per run:
+
+- Raw test data file
+- Processed fitting notebook or script output
+- Final parameter card
+- One comparison plot (measured vs simulated voltage)
+
+Use the print-ready acceptance form for final review:
+
+- [08-validation-checklist.md](08-validation-checklist.md)
